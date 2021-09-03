@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Text = styled.p`
-padding: 10px;
+padding: 0 24px;
 font-size: 24px;
 color: black;
 font-weight: bold;
