@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Text, Green, Orange, Red, BigNumbers} from './Statictics.styled'
 
 const Statistics = ({good,neutral,bad,total, positivePercentage}) => (
     <div>
-    <p>Good: {good}</p>
-    <p>Neutral: {neutral}</p>
-    <p>Bad: {bad}</p>
-    <p>Total: {total}</p>
-    <p>Positive feedback: {positivePercentage}%</p>
+    <Text>Good: <BigNumbers><Green>{good}</Green></BigNumbers></Text>
+    <Text>Neutral: <BigNumbers><Orange>{neutral}</Orange></BigNumbers></Text>
+    <Text>Bad: <BigNumbers><Red>{bad}</Red></BigNumbers></Text>
+    <Text>Total: <BigNumbers>{total}</BigNumbers></Text>
+    <Text>Positive feedback: <BigNumbers>{positivePercentage}%</BigNumbers></Text>
 </div>
 )
 
