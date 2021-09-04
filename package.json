@@ -2,7 +2,7 @@
   "name": "goit-react-hw-02-feedback",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://marynaskyba.github.io/goit-react-hw-01-feedback",
+  "homepage": "https://marynaskyba.github.io/goit-react-hw-02-feedback",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -50,7 +50,7 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "*.js, jsx": "eslint --cache --fix",
+    "*.{js, jsx}": "eslint --cache --fix",
     "*.{js,jsx,css,md}": "prettier --write"
   }
 }
