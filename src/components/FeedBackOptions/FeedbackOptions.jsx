@@ -11,7 +11,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) =>
 
 export default FeedbackOptions;
 
-FeedbackOptions.propTypes = {
-  options: PropTypes.array,
-  onLeaveFeedback: PropTypes.func,
-};
+// FeedbackOptions.propTypes = {
+//   options: PropTypes.array,
+//   onLeaveFeedback: PropTypes.func,
+// };
