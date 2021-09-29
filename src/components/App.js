@@ -5,54 +5,44 @@ import Section from './Sections/Section';
 import Notification from './Notification/Notification';
 
 export default function App() {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
+  const [state, setState] = useState({ good: 0, neutral: 0, bad: 0 });
 
   const handleIncrement = feedback => {
-    switch (feedback) {
-      case 'good':
-        setGood(state => state + 1);
-        break;
-      case 'neutral':
-        setNeutral(state => state + 1);
-        break;
-      case 'bad':
-        setBad(state => state + 1);
-        break;
-      default:
-        console.log('Invalid feedback type');
-    }
+    console.log(feedback);
+    setState(prevState => ({ ...prevState, [feedback]: prevState[feedback] + 1 }));
   };
 
   const countTotalFeedback = () => {
-    return good + bad + neutral;
+    return Object.values(state).reduce((acc, value) => acc + value, 0);
   };
 
   const countPositiveFeedbackPercentage = () => {
-    const total = good + bad + neutral;
-    return Math.round((good * 100) / total);
+    return Math.round((state.good * 100) / countTotalFeedback());
   };
 
-  const options = Object.keys({ good, neutral, bad });
+  const isShowStatistics = countTotalFeedback() > 0;
+  const options = Object.keys(state);
+  const total = countTotalFeedback();
+  const persentage = countPositiveFeedbackPercentage();
+
   return (
     <div>
       <Section title="Please leave feedback">
         <FeedbackOptions options={options} onLeaveFeedback={handleIncrement} />
       </Section>
-      {good || bad || neutral > 0 ? (
+      {isShowStatistics && (
         <Section title="Statistic">
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            good={state.good}
+            neutral={state.neutral}
+            bad={state.bad}
+            total={total}
+            positivePercentage={persentage}
           />
         </Section>
-      ) : (
-        <Notification message="No feedback given"></Notification>
       )}
+
+      {!isShowStatistics && <Notification message="No feedback given" />}
     </div>
   );
 }
